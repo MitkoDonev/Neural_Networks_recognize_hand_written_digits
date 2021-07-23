@@ -24,9 +24,12 @@ def create_CNN_model(X_train, y_train, X_test, y_test, X_val, y_val):
     history = cnn.fit(x=X_train_flattened, y=y_train, validation_data=(X_val_flattened, y_val), epochs=600, batch_size=32, verbose=False, callbacks=[callback])
 
     test_loss, test_acc = cnn.evaluate(x=X_test_flattened, y=y_test)
-
+    
+    print(f"Test loss: {test_loss}")
     print(f"Test accuracy: {test_acc}")
 
     predictions = cnn.predict(X_test_flattened)
+
+    cnn.save('trained_model.h5')
 
     return predictions
