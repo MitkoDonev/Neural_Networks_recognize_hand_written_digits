@@ -14,9 +14,8 @@ def create_CNN_model(X_train, y_train, X_test, y_test, X_val, y_val):
     X_val_flattened  = X_val.reshape(len(X_val), 28*28)
 
     cnn = Sequential()
-    cnn.add(Flatten())
     cnn.add(Dense(units=128, activation='relu'))
-    cnn.add(Dense(units=128, activation='relu'))
+    cnn.add(Dense(units=64, activation='relu'))
     cnn.add(Dense(units=10, activation='softmax'))
 
     callback = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
